@@ -1,0 +1,199 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+  --body-bg1: skyblue;
+  --body-bg2: #00ff7f;
+  --body-bg3: #ee82ee;
+  --card1-gradient-color1: #f12711;
+  --card1-gradient-color2: #f5af19;
+  --card2-gradient-color1: #7F00FF;
+  --card2-gradient-color2: #E100FF;
+  --card3-gradient-color1: #3f2b96;
+  --card3-gradient-color2: #a8c0ff;
+}
+
+body,
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background-image: repeating-conic-gradient(from var(--g, 0deg),
+      var(--body-bg1) 0% 5%,
+      var(--body-bg2) 5% 10%,
+      var(--body-bg3) 10% 15%);
+  animation: body-background 5s linear infinite;
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  pointer-events: none;
+
+  .container {
+    display: flex;
+    align-content: center;
+    height: max-content;
+    gap: 2rem;
+    pointer-events: none;
+  }
+}
+
+::selection {
+  background-color: lime;
+}
+
+.am-card {
+  flex-grow: 1;
+  width: 180px;
+  max-width: 180px;
+  height: 260px;
+  background-color: #fff;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 4px solid #fff2;
+  transition: scale .3s;
+  pointer-events: auto;
+  
+
+  * {
+    pointer-events: none;
+  }
+
+  &.scaled {
+    scale: 1.1;
+  }
+
+  .am-header {
+    width: 140%;
+    height: 70%;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom left, var(--card1-gradient-color1), var(--card1-gradient-color2));
+    position: relative;
+    left: -20%;
+    top: -12%;
+
+    img {
+      display: block;
+      position: absolute;
+      bottom: .7em;
+      left: 50%;
+      transform: rotate(45deg) translateX(-50%);
+    }
+
+    .redmagic {
+      width: 2.3rem;
+    }
+
+    .razer {
+      width: 6.3em;
+      transform: rotate(15deg) translateX(-50%);
+      bottom: 1.8em;
+    }
+
+    .logitech {
+      width: 4.3em;
+      transform: rotate(-5deg) translateX(-50%);
+      bottom: 2.3em;
+    }
+  }
+
+  .am-footer {
+
+    h4 {
+      margin-top: -.4rem;
+      text-align: center;
+      margin-bottom: .5rem;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: center;
+      flex-direction: row-reverse;
+      background-color: red;
+      
+
+      input {
+        display: none;
+        pointer-events: auto;
+      }
+
+      label {
+        position: relative;
+        display: block;
+        width: 24px;
+        margin-right: .3rem;
+        pointer-events: auto; 
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          width: 24px;
+          height: 24px;
+          background-color: #aaa;
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          width: 24px;
+          height: 24px;
+          background-color: #23b2eb;
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+          transition: .5s;
+          opacity: 0;
+        }
+      }
+
+      label:hover::after,
+      input:checked~label::after,
+      label:hover~label::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.am-card:nth-child(2) .am-header {
+  background-image: linear-gradient(to bottom left, var(--card2-gradient-color1), var(--card2-gradient-color2));
+}
+
+.am-card:nth-child(3) .am-header {
+  background-image: linear-gradient(to bottom left, var(--card3-gradient-color1), var(--card3-gradient-color2));
+}
+
+@keyframes body-background {
+  0% {
+    --g: 0deg
+  }
+
+  100% {
+    --g: 360deg
+  }
+}
+
+@property --g {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+  
+@media (width <=700px) {
+  body {
+    .container {
+      padding: 2rem 0;
+      flex-direction: column;
+    }
+  }
+}

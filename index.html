@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate this cards</title>
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <article class="am-card" role="button">
+      <header class="am-header">
+        <img src="assets/redmagic.webp" alt="foto" class="redmagic">
+      </header>
+      <footer class="am-footer">
+        <h4>RedMagic 9S Pro</h4>
+        <div class="rating">
+          <input type="radio" name="starA" id="star1A" checked>
+          <label for="star1A"></label>
+          <input type="radio" name="starA" id="star2A">
+          <label for="star2A"></label>
+          <input type="radio" name="starA" id="star3A">
+          <label for="star3A"></label>
+          <input type="radio" name="starA" id="star4A">
+          <label for="star4A"></label>
+          <input type="radio" name="starA" id="star5A">
+          <label for="star5A"></label>
+        </div>
+      </footer>
+    </article>
+    <article class="am-card" role="button">
+      <header class="am-header">
+        <img src="assets/razer.webp" alt="foto" class="razer">
+      </header>
+      <footer class="am-footer">
+        <h4>Razer Huntsman V2</h4>
+        <div class="rating">
+          <input type="radio" name="starB" id="star1B">
+          <label for="star1B"></label>
+          <input type="radio" name="starB" id="star2B">
+          <label for="star2B"></label>
+          <input type="radio" name="starB" id="star3B" checked>
+          <label for="star3B"></label>
+          <input type="radio" name="starB" id="star4B">
+          <label for="star4B"></label>
+          <input type="radio" name="starB" id="star5B">
+          <label for="star5B"></label>
+        </div>
+      </footer>
+    </article>
+    <article class="am-card" role="button">
+      <header class="am-header">
+        <img src="assets/logitech.webp" alt="foto" class="logitech">
+      </header>
+      <footer class="am-footer">
+        <h4>Logitech G502X</h4>
+        <div class="rating">
+          <input type="radio" name="starc" id="star1C">
+          <label for="star1C"></label>
+          <input type="radio" name="starc" id="star2C" checked>
+          <label for="star2C"></label>
+          <input type="radio" name="starc" id="star3C">
+          <label for="star3C"></label>
+          <input type="radio" name="starc" id="star4C">
+          <label for="star4C"></label>
+          <input type="radio" name="starc" id="star5C">
+          <label for="star5C"></label>
+        </div>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    console.log(
+      "Cards Reference: \n",
+      "https://essentialwebapps.com/css/css-cards/ \n",
+      "https://codepen.io/Incorr3ct/pen/ExvYJvN"
+    );
+
+    document.addEventListener("click", e => {
+      if (e.target.matches(".am-card")) {
+        document.querySelectorAll(".scaled").forEach(el => {
+          el.classList.remove("scaled")
+        })
+        e.target.classList.toggle("scaled");
+
+      }
+    })
+  </script>
+</body>
+
+</html>
